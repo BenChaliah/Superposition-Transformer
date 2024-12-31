@@ -1,82 +1,83 @@
-# Superposition-Transformer
+## Superposition in Transformers: A Novel Way of Building Mixture of Experts
 
-
-## Overview
-
-This repository contains the implementation of our method for creating Mixture of Experts (MoE) models where multiple Language Models co-exist in the same parameter space. Our approach uses autoencoders and B-spline blending to enable efficient model merging while mitigating catastrophic forgetting.
-
-## Important Disclaimers
-
-- This implementation is a research prototype and may not be suitable for production use
-- The models' behavior and edge cases are not fully understood - carefully evaluate for your use case
-- Performance may vary depending on the specific models being merged and domains involved
+> __If you find this work helpful, please consider starring this repository!__
 
 ## Repository Contents
 
-The implementation is provided in two Jupyter notebooks:
+- `Superposition_in_Transformers.pdf` - The full research paper
+- `1D-Alpha_Variant_LayerBias_LinearConv.ipynb` - Implementation of the 1D-alpha model with layer bias and linear convolution
+- `2D-Alpha_Variant_LayerBias_ResLinearAdapter-Conv.ipynb` - Implementation of the 2D-alpha model with layer bias and residual linear adapter convolution
+- `Benchmarks_1DAlpha_LayerBias_ConvLinear.ipynb` - Performance benchmarks and comparisons for the 1D-alpha model
 
-### 1. `1D_alpha_model.ipynb`
-- Implementation of the scalar alpha value architecture
-- Complete training pipeline
-- Evaluation metrics and validation
-- Visualization code for:
-  - t-SNE plots
-  - Hidden state trajectories
-  - Model performance analysis
+### Abstract
 
-### 2. `2D_alpha_model.ipynb`
-- Implementation of the vector-based alpha architecture
-- Training and evaluation pipeline
-- Analysis tools for neuron polysemanticity
-- Visualization code for:
-  - Neuron diversity plots
-  - Activation patterns
-  - Enhanced t-SNE visualizations
+Catastrophic forgetting remains a major challenge when adapting large language models (LLMs) to new tasks or domains. We introduce *Superposition in Transformers*, a novel architecture that leverages autoencoders to superimpose the hidden representations of a base model and a fine-tuned model within a shared parameter space. Using B-spline-based blending coefficients and autoencoders that adaptively reconstruct hidden states based on the input data distribution, our method effectively mitigates catastrophic forgetting and enables a new paradigm of "in-model" superposition.
 
-## Requirements
+### Notebooks Overview
+
+1. **1D-Alpha_Variant_LayerBias_LinearConv.ipynb**  
+   Demonstrates the "1D-alpha model" using scalar α values for each layer.  
+   - B-spline-based α blending implementation
+   - Autoencoder usage for reconstructing base/fine-tuned hidden states
+   - Perplexity and accuracy metrics for English-French adaptation
+
+2. **2D-Alpha_Variant_LayerBias_ResLinearAdapter-Conv.ipynb**  
+   Explores the "2D-alpha model" with vector-based α per dimension.
+   - Local (convolutional) and global (adapter) autoencoder pathways
+   - Polysemantic neuron analysis and multi-task representation
+   - t-SNE visualizations of hidden states
+
+3. **Benchmarks_1DAlpha_LayerBias_ConvLinear.ipynb**  
+   - Performance comparisons against baselines
+   - Perplexity and Jensen-Shannon divergence analysis
+   - Direct comparisons with linear interpolation methods
+
+## Key Features
+
+- **Autoencoder-Based Superposition**: Hidden states from base and fine-tuned models are combined and reconstructed by autoencoders, preserving domain-specific knowledge.
+- **B-Spline Blending**: Smooth transitions between base and fine-tuned states using learned blending coefficients.
+- **Parameter Efficiency**: Only trains small auxiliary components while keeping main model weights frozen.
+- **Polysemantic Neurons**: Demonstrates emergence of neurons that handle multiple tasks/domains.
+
+## Environment Setup
 
 ```bash
-pip install -r requirements.txt
+pip install torch transformers scikit-learn matplotlib
 ```
 
-Key dependencies:
-- PyTorch
-- Transformers
-- NumPy
-- Scikit-learn
-- Matplotlib
-- Pandas
+## Results
 
-## Experimental Results
-
-Our implementation demonstrates:
-- Effective merging of English and French language models
-- Perplexity metrics comparable to specialized models
-- Successful hidden state reconstruction
-- Increased proportion of polysemantic neurons
-
-For detailed results and analysis, please refer to the paper.
-
-## Future Work
-
-We are considering:
-- Extending the approach to handle more than two models
-- Investigating bottleneck hyperparameters and their impact on model performance
-- Exploring applications in chain-of-thought reasoning
+Our experiments show:
+- Lower perplexity vs linear interpolation and task arithmetic models
+- Preservation of both English and French capabilities
+- Increased polysemantic neuron count
+- Successful dynamic language model switching during inference
 
 ## Citation
 
-Please use the following bibtex entry:
 ```bibtex
-@article{benchaliah2024superposition,
-  title={Superposition and Autoencoders, a Novel Way of Building Mixture of Experts},
+@misc{benchaliah2023superposition,
+  title={Superposition in Transformers: A Novel Way of Building Mixture of Experts},
   author={Ben Chaliah, Ayoub and Dellagi, Hela},
-  year={2024}
+  year={2024},
+  howpublished={\url{https://github.com/BenChaliah/Superposition-Transformer}},
 }
 ```
 
-## Contact
+## Contributing
 
-For questions and feedback:
-- Ayoub Ben Chaliah - ayoub1benchaliah@gmail.com
-- Hela Dellagi - hela.dellagi@outlook.com
+We welcome:
+- Issues via GitHub Issue Tracker
+- Pull requests with improvements
+- Feedback and suggestions
+
+## Authors
+
+- Ayoub Ben Chaliah - [ayoub1benchaliah@gmail.com](mailto:ayoub1benchaliah@gmail.com)
+- Hela Dellagi - [hela.dellagi@outlook.com](mailto:hela.dellagi@outlook.com)
+
+---
+### License: MIT
+---
+
+**Enjoy exploring Superposition in Transformers!**  
