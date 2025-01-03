@@ -1,6 +1,6 @@
 # Superposition in Transformers: A Novel Way of Building Mixture of Experts
 
-> __If you find this work helpful, please consider starring this repository!__
+> __If you find this work interesting, please consider starring this repository!__
 
 Paper available on arXiv: [Superposition in Transformers: A Novel Way of Building Mixture of Experts](https://arxiv.org/abs/2501.00530)
 
