@@ -1,6 +1,8 @@
-## Superposition in Transformers: A Novel Way of Building Mixture of Experts
+# Superposition in Transformers: A Novel Way of Building Mixture of Experts
 
 > __If you find this work helpful, please consider starring this repository!__
+
+Paper available on arXiv: [Superposition in Transformers: A Novel Way of Building Mixture of Experts](https://arxiv.org/abs/2501.00530)
 
 ## Repository Contents
 
@@ -16,21 +18,21 @@ Catastrophic forgetting remains a major challenge when adapting large language m
 ### Notebooks Overview
 
 1. **1D-Alpha_Variant_LayerBias_LinearConv.ipynb**  
-   Demonstrates the "1D-alpha model" using scalar α values for each layer.  
-   - B-spline-based α blending implementation
-   - Autoencoder usage for reconstructing base/fine-tuned hidden states
-   - Perplexity and accuracy metrics for English-French adaptation
+    Demonstrates the "1D-alpha model" using scalar α values for each layer.
+    - B-spline-based α blending implementation
+    - Autoencoder usage for reconstructing base/fine-tuned hidden states
+    - Perplexity and accuracy metrics for English-French adaptation
 
 2. **2D-Alpha_Variant_LayerBias_ResLinearAdapter-Conv.ipynb**  
-   Explores the "2D-alpha model" with vector-based α per dimension.
-   - Local (convolutional) and global (adapter) autoencoder pathways
-   - Polysemantic neuron analysis and multi-task representation
-   - t-SNE visualizations of hidden states
+    Explores the "2D-alpha model" with vector-based α per dimension.
+    - Local (convolutional) and global (adapter) autoencoder pathways
+    - Polysemantic neuron analysis and multi-task representation
+    - t-SNE visualizations of hidden states
 
 3. **Benchmarks_1DAlpha_LayerBias_ConvLinear.ipynb**  
-   - Performance comparisons against baselines
-   - Perplexity and Jensen-Shannon divergence analysis
-   - Direct comparisons with linear interpolation methods
+    - Performance comparisons against baselines
+    - Perplexity and Jensen-Shannon divergence analysis
+    - Direct comparisons with linear interpolation methods
 
 ## Key Features
 
@@ -57,10 +59,14 @@ Our experiments show:
 
 ```bibtex
 @misc{benchaliah2023superposition,
-  title={Superposition in Transformers: A Novel Way of Building Mixture of Experts},
-  author={Ben Chaliah, Ayoub and Dellagi, Hela},
-  year={2024},
-  howpublished={\url{https://github.com/BenChaliah/Superposition-Transformer}},
+   title={Superposition in Transformers: A Novel Way of Building Mixture of Experts},
+   author={Ben Chaliah, Ayoub and Dellagi, Hela},
+   year={2024},
+   eprint={2501.00530},
+   archivePrefix={arXiv},
+   primaryClass={cs.LG},
+   url={https://arxiv.org/abs/2501.00530},
+   howpublished={\url{https://github.com/BenChaliah/Superposition-Transformer}},
 }
 ```
 
@@ -80,4 +86,4 @@ We welcome:
 ### License: MIT
 ---
 
-**Enjoy exploring Superposition in Transformers!**  
+**Enjoy exploring Superposition in Transformers!**
